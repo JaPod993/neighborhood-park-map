@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Map from './map.js'
 import './App.css'
 import Markers from './Markers.js'
-import superagent from 'superagent'
 import Parks from './data/parks.json'
 
 let parks= Parks;
@@ -17,12 +16,13 @@ class App extends Component {
         // Parks,
         pageTitle: "Parks in my neighborhood",
         listTitle: "List of parks in my neighborhood",
-        activeKey: ""
+        activeMarker: "",
+        error: "There was an error with making a request for information about this place."
     };
 
     toggleLocationsActive = locationKey => {
       this.setState({
-          activeKey: locationKey
+          activeMarker: locationKey
       })
     };
 
@@ -53,12 +53,6 @@ class App extends Component {
         document.getElementById('open-menu').style.display = "block";
     }
 
-    hideError(){
-        let infoBox = document.getElementById('info-box');
-        infoBox.setAttribute('styles', 'display: none;');
-    }
-
-
     render() {
 
     return (
@@ -66,12 +60,12 @@ class App extends Component {
             <button id='open-menu' onClick={() => this.openMenu()}>Open menu</button>
             <div id="panel">
                 <button id="close-menu" onClick={() => this.closeMenu()}>x</button>
-                <h1>{this.state.pageTitle}</h1>
+                <h1 tabIndex="0">{this.state.pageTitle}</h1>
                 <div className="options-box">
-                    <button onClick={() => this.showParks()} id="show-parks">Show All Parks</button>
+                    <button tabIndex="0" onClick={() => this.showParks()} id="show-parks"><img alt="Theatre symbol" src="/src/icons/park1.png" /><span className="textBtn">Parks</span></button>
                 </div>
                 <div id="list-of-localisations">
-                    <h2>{this.state.listTitle}</h2>
+                    <h2 tabIndex="0">{this.state.listTitle}</h2>
                     <Markers
                         onShowParks={this.showParks}
                         markers={this.state.markers}
@@ -82,14 +76,13 @@ class App extends Component {
                 </div>
             </div>
             <div id="info-box">
-                <span id="next">{ this.state.error }</span>
+                <span tabIndex="0" id="next">{ this.state.error }</span>
             </div>
             <div id="map">
                 {(navigator.onLine)&&(
                     <Map
                         activeKey={this.state.activeKey}
                         toggleLocationsActive = {this.toggleLocationsActive}
-                        hideError={this.hideError}
                         isMarkerShown
                         onShowParks={this.showParks}
                         markers={this.state.markers}
@@ -99,15 +92,17 @@ class App extends Component {
                         mapElement={<div style={{height:'100%'}} />}
                     />)}
                 {(!navigator.onLine)&&(
-                    <div className="offline">
-                        <h3>You are offline ...</h3>
-                        <p>You can see list of parks in my neighborhood.<br/>
-                            For this click button 'Open map menu'.</p>
+                    <div className="container-offline">
+                        <div id="info-offline">
+                            <h3>You are offline ...</h3>
+                            <p>You can see list for cultural places in Warsaw.<br/>
+                                For this click button 'Open map menu'.</p>
+                        </div>
                     </div>
                 )}
             </div>
         </div>
-    );
+    )
   }
 }
 

@@ -6,13 +6,14 @@ export const getInfo = (search) => {
         }).then(response => response.json()).then(addInfo).catch(e => requestError(e));
     };
 
-    const addInfo = (data) => {
+    const setInfo = (data) => {
     console.log(data);
     const link = data[3][0];
     const art = data[2][0];
     if (link || art) {
         document.querySelector('#short-article').innerHTML = '<em>' + art + '</em><br/>';
         document.querySelector('#results').setAttribute("href", link);
+        document.querySelector('#results').setAttribute("alt", link);
         document.querySelector('#results').innerHTML = 'See article in Wikipedia »';
     }
     else {
@@ -20,7 +21,7 @@ export const getInfo = (search) => {
     }
 };
 
-const requestError =(e) => {
+const displayError =(e) => {
     console.log(e);
     let infoBox = document.getElementById('info-box');
     infoBox.setAttribute('class', 'show');

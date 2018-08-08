@@ -6,8 +6,6 @@ import Markers from './Markers.js';
 import { geocodeByPlaceId } from 'react-places-autocomplete'
 import {getInfo} from './wikipediaApi.js'
 
-const google= windows.google;
-
 export const Map = compose(
     withStateHandlers(() => ({
     isOpen: false,
@@ -37,28 +35,28 @@ export const Map = compose(
                         icon={'./icons/park1.png'}
                         onClick={() => {
                             props.toggleLocationsActive(i);
+                            getInfo(marker.title);
                         }}
                     >
-                        {i === props.activeKey && (
+                        {i === props.activeMarker && (
                             getInfo(marker.title),
                             geocodeByPlaceId(marker.place_id)
                                 .then(results => {
                                 const address = results[0].formatted_address;
                                 document.getElementById('address').innerHTML += address;
-                                console.log(results);
                                 })
                                 .catch(error => console.error(error)),
                             <InfoWindow onCloseClick={props.onToggleOpen}>
                                 <div id='info-window'>
-                                    <span id="title">{marker.title}</span>
+                                    <span tabIndex="0" id="title">{marker.title}</span>
                                     <br/>
-                                    <span id='address-title'>Address:</span>
+                                    <span tabIndex="0" id='address-title'>Address:</span>
                                     <br/>
-                                    <span id="address"></span>
+                                    <span tabIndex="0" id="address"></span>
                                     <br/>
-                                    <span id='short-article'></span>
+                                    <span tabIndex="0" id='short-article'></span>
                                     <br/>
-                                    <a target='blank' id='results'></a>
+                                    <a tabIndex="0" target='blank' id='results'></a>
                                     <br/>
                                 </div>
                         </InfoWindow>)}

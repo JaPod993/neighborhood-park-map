@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 export const requestError = (e) => {
     console.log(e);
     let errorInfo = document.createElement('div');
