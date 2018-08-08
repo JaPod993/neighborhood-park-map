@@ -1,47 +1,37 @@
 import React, { Component } from 'react'
 import Map from './map.js'
 import './App.css'
-import Parks from './parks.js'
+import Markers from './Markers.js'
 import superagent from 'superagent'
+import Parks from './data/parks.json'
+
+
+let markers = [];
+let markers_parks = [];
 
 class App extends Component {
-  constructor(){
-      super()
-      this.state = {
-          venues:[]
+    state = {
+        markers: [],
+        markers_parks: []
+    }
+
+  componentWillMount(){
+      let parks = Parks;
+
+      //creating array of markers from parks json
+      for (let i = 0; i < parks.length; i++) {
+          let location = parks[i].location;
+          let title = parks[i].title;
+          let place_id = parks[i].place_id;
+          let marker = parks[i];
+          // Push the marker to our array of markers.
+          markers_parks.push(marker);
+          markers.push(marker);
       }
   }
 
-  componentWillMount(){
-      console.log('componentwillmount');
-  }
-
-  const url ='data/parks.json'
-
-  superagent
-  .get(url)
-  .query(null)
-  .set('Accept', 'text/json')
-  .end((error, response) => {
-
-      console.log(JSON.stringify(venues))
-})
-
-
-
   render() {
     return (
-        const markers = [
-                {
-                    location: {
-                        lat: 50.07598,
-                        lng: 20.0030946
-                    }
-                }
-
-            ]
-
-
         <div className="container">
             <h1>Parks in my neighborhood</h1>
             <div className="show-box">
@@ -49,14 +39,16 @@ class App extends Component {
             </div>
             <div id="list-of-localisations">
                 <h2>List of places</h2>
-                <ul id="list-of-places"></ul>
+                <Markers markers={markers}/>
             </div>
             <div id="map">
                 <Map
-                    zoom={13}
-                    center={{lat: 50.07598, lng: 20.0030946}}
-                    containerElement={<div style={{height:100+'%'}} />}
-                    mapElement={<div style={{height:100+'%'}} />}
+                    markers={markers}
+                    isMarkerShown
+                    googleMapURL="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCQOBc4Ov8uW2hnucJsZTeKmHqo-dZdNmQ"
+                    loadingElement={<div style={{height: '100%'}}/>}
+                    containerElement={<div style={{height:'100%'}} />}
+                    mapElement={<div style={{height:'100%'}} />}
                 />
             </div>
         </div>
