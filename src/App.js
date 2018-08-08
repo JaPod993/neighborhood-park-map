@@ -21,18 +21,23 @@ class App extends Component {
         activeKey: ""
     };
 
+    toggleLocationsActive = locationKey => {
+      this.setState({
+          activeKey: locationKey
+      })
+    };
+
     componentWillMount(){
         //creating array of markers from parks json
         for (let i = 0; i < parks.length; i++) {
             let marker = parks[i];
             // Push the marker to our array of markers.
+            markers_all.push(marker);
             markers_parks.push(marker);
-            markers.push(marker);
         }
 
         showParks = (markers) => {
             this.setState({markers: markers_parks});
-            console.log(markers_parks);
         }
     }
 
@@ -47,9 +52,9 @@ class App extends Component {
             <div id="list-of-localisations">
                 <h2>{this.state.listTitle}</h2>
                 <Markers
-                    onShowParks={this.showParks} markers={markers}
+                    onShowParks={this.showParks}
                     markers={this.state.markers}
-                    toggleLocationsActive ={this.togleLocationsActive}
+                    toggleLocationsActive={this.toggleLocationsActive}
                 />
             </div>
             <div id="map">

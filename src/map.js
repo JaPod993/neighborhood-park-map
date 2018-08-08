@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { compose, withProps, withStateHandlers } from 'recompose'
+import { compose, withProps, withState, withStateHandlers, withHandlers } from 'recompose'
 import { withScriptjs,withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import MapStyles from './data/MapStyles.json';
 import Markers from './Markers.js';
-import Icon from './icons/park1.png'
-
-let icon = Icon;
 
 export const Map = compose(
     withStateHandlers(() => ({
@@ -16,7 +13,9 @@ export const Map = compose(
         })
     }),
     withScriptjs,
-    withGoogleMap
+    withGoogleMap,
+    withState('places', 'updatePlaces', ''),
+    withState('selectedPlace', 'updateSelectedPlace', null),
 ) (props  => {
     return (
         <GoogleMap
@@ -25,20 +24,23 @@ export const Map = compose(
             defaultOptions={{styles: MapStyles}}
             mapTypeControl={false}
             >{ props.isMarkerShown && props.markers.map((marker, i) => {
+                let icon = {
+                    url: './icons/park1.png'
+                }
                 return (
                     <Marker
                         {...marker}
                         key={i}
                         position={marker.location}
                         title={marker.title}
+                        icon={'./icons/park1.png'}
                         onClick={() => {
                             props.toggleLocationsActive(i);
                         }}
-                        icon={icon}
                     >
-                    {i === props.activeKey && (<InfoWindow onCloseClick={props.onToggleOpen}>
-                        <div>{marker.title}</div>
-                    </InfoWindow>)}
+                        {i === props.activeKey && (<InfoWindow onCloseClick={props.onToggleOpen}>
+                            <div>{marker.title}</div>
+                        </InfoWindow>)}
                     </Marker>
                 );})}
         </GoogleMap>
