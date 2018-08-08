@@ -38,7 +38,7 @@ class App extends Component {
 
         showParks = (markers) => {
             this.setState({markers: markers_parks});
-        }
+        };
 
         openMenu(){
             document.getElementById('panel').style.display = "block";
