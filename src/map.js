@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withScriptjs,withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import MapStyles from './data/MapStyles';
-import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
+
 
 
 export const Map = compose(
@@ -14,20 +14,22 @@ export const Map = compose(
     }),
     withScriptjs,
     withGoogleMap
-) (props) => {
+) (props  => {
     return (
         <GoogleMap
             defaultZoom={13}
-            defaultCenter={{ lat: 52.229676, lng: 21.012229 }}
+            defaultCenter={{ lat: 50.07598, lng: 20.0030946 }}
             defaultOptions={{styles: MapStyles}}
-            >{
-                props.markers.map((marker, i) => {
+            mapTypeControl={false}
+            >{ props.markers.map( marker => {
                     console.log(marker.location);
                     <Marker
-                        key={marker[i]}
+                        {...marker}
+                        key={marker.place_id}
                         position={marker.location}
                         title={marker.title}
                         onClick={props.onToggleOpen}
+                        icon={{url: 'icons/park1.png'}}
                     >
                     {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
                         <div>Open</div>

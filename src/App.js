@@ -20,9 +20,9 @@ class App extends Component {
 
       //creating array of markers from parks json
       for (let i = 0; i < parks.length; i++) {
-          let location = parks[i].location;
-          let title = parks[i].title;
-          let place_id = parks[i].place_id;
+          // let location = parks[i].location;
+          // let title = parks[i].title;
+          // let place_id = parks[i].place_id;
           let marker = parks[i];
           // Push the marker to our array of markers.
           markers_parks.push(marker);
@@ -45,7 +45,7 @@ class App extends Component {
                 <Map
                     markers={markers}
                     isMarkerShown
-                    googleMapURL="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCQOBc4Ov8uW2hnucJsZTeKmHqo-dZdNmQ"
+                    googleMapURL="http://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&key=AIzaSyCQOBc4Ov8uW2hnucJsZTeKmHqo-dZdNmQ"
                     loadingElement={<div style={{height: '100%'}}/>}
                     containerElement={<div style={{height:'100%'}} />}
                     mapElement={<div style={{height:'100%'}} />}
