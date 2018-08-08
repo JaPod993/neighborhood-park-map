@@ -14,6 +14,7 @@ html, body {
   z-index: 10;
   background-color: #fff;
 }
+
 #open-menu{
   position: absolute;
   top:11px;
@@ -26,6 +27,7 @@ html, body {
   cursor: pointer;
   border: none;
 }
+
 #close-menu{
   position: absolute;
   top: 11px;
@@ -38,11 +40,13 @@ html, body {
   cursor: pointer;
   border: none;
 }
+
 #open-menu:hover,
 #close-menu:hover {
   background-color:#eee;
   color:#222;
 }
+
 .options-box {
   background: #fff;
   border-radius: 3px;
@@ -52,34 +56,48 @@ html, body {
   text-align: left;
   width: 260px;
 }
+
 .options-box button {
   display: block;
   float: left;
   width: 120px;
   margin-top: 5px;
+  background-color: #eee;
+  border-radius: 5px;
+  cursor: pointer;
 }
+
+.options-box button:hover{
+  background-color:#fefefe;
+}
+
 #show-theatres,
 #show-museums {
   margin-right: 10px;
 }
+
 #show-museums,
 #show-galeries {
   margin-top: 10px;
 }
+
 #show-all{
   width: 250px;
   margin: 10px 0 20px 0;
   padding: 10px 0;
 }
+
 h1{
   font-size: 1.2em;
   padding-left: 20px;
   margin-bottom: 0;
 }
+
 h2{
   padding-left: 20px;
   font-size: 1.1em;
 }
+
 #list-of-places {
   width: 230px;
   height: 320px;
@@ -99,16 +117,19 @@ h2{
   margin-bottom: 10px;
   padding: 3px 0;
 }
+
 #results{
   font-size: 1.2em;
   font-weight: bold;
 }
+
 #list-of-places li:hover,
 #results:hover{
   background-color: #fff;
   color: rgb(7, 45, 82);
   text-decoration: none;
 }
+
 #map {
   bottom: 0px;
   height: 100%;
@@ -117,6 +138,11 @@ h2{
   right: 0px;
   z-index: 1;
 }
+
+#info-window{
+  overflow: hidden;
+}
+
 
 .gm-style-iw {
   width: 200px !important;
@@ -142,6 +168,11 @@ h2{
   font-size: 1.1em;
 }
 
+#info{
+  color: #ff0000;
+  padding: 5px;
+}
+
 .textBtn{
   position: relative;
   top: -10px;
@@ -151,6 +182,11 @@ h2{
 #show-all .textBtn{
   top: 0;
   left: 0;
+}
+
+.offline {
+  position: absolute;
+  left: 300px;
 }
 
 @media (max-width:767px) {

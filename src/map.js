@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { compose, withProps, withState, withStateHandlers, withHandlers } from 'recompose'
-import { withScriptjs,withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import { compose, withState, withStateHandlers, } from 'recompose'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import MapStyles from './data/MapStyles.json';
 import Markers from './Markers.js';
 import { geocodeByPlaceId } from 'react-places-autocomplete'
 import {getInfo} from './wikipediaApi.js'
+
+const google= windows.google;
 
 export const Map = compose(
     withStateHandlers(() => ({
@@ -40,14 +42,14 @@ export const Map = compose(
                         {i === props.activeKey && (
                             getInfo(marker.title),
                             geocodeByPlaceId(marker.place_id)
-                                .then(recults => {
-                                const address = recults[0].formatted_address;
+                                .then(results => {
+                                const address = results[0].formatted_address;
                                 document.getElementById('address').innerHTML += address;
-                                console.log(recults);
+                                console.log(results);
                                 })
                                 .catch(error => console.error(error)),
                             <InfoWindow onCloseClick={props.onToggleOpen}>
-                                <div>
+                                <div id='info-window'>
                                     <span id="title">{marker.title}</span>
                                     <br/>
                                     <span id='address-title'>Address:</span>
@@ -56,8 +58,8 @@ export const Map = compose(
                                     <br/>
                                     <span id='short-article'></span>
                                     <br/>
-                                    <a target=_blank id='results'></a>
-                                    <span id='info'></span>
+                                    <a target='blank' id='results'></a>
+                                    <br/>
                                 </div>
                         </InfoWindow>)}
                     </Marker>

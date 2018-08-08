@@ -5,11 +5,10 @@ import Markers from './Markers.js'
 import superagent from 'superagent'
 import Parks from './data/parks.json'
 
-
+let parks= Parks;
 let markers_all = [];
 let markers_parks = [];
 
-let parks= Parks;
 
 class App extends Component {
     state = {
@@ -54,6 +53,11 @@ class App extends Component {
         document.getElementById('open-menu').style.display = "block";
     }
 
+    hideError(){
+        let infoBox = document.getElementById('info-box');
+        infoBox.setAttribute('styles', 'display: none;');
+    }
+
 
     render() {
 
@@ -73,21 +77,34 @@ class App extends Component {
                         markers={this.state.markers}
                         closeMenu={this.closeMenu}
                         toggleLocationsActive={this.toggleLocationsActive}
+                        hideError={this.hideError}
                     />
                 </div>
             </div>
+            <div id="info-box">
+                <span id="next">{ this.state.error }</span>
+            </div>
             <div id="map">
-                <Map
-                    activeKey={this.state.activeKey}
-                    toggleLocationsActive = {this.toggleLocationsActive}
-                    isMarkerShown
-                    onShowParks={this.showParks}
-                    markers={this.state.markers}
-                    googleMapURL="http://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&key=AIzaSyCQOBc4Ov8uW2hnucJsZTeKmHqo-dZdNmQ"
-                    loadingElement={<div style={{height: '100%'}}/>}
-                    containerElement={<div style={{height:'100%'}} />}
-                    mapElement={<div style={{height:'100%'}} />}
-                />
+                {(navigator.onLine)&&(
+                    <Map
+                        activeKey={this.state.activeKey}
+                        toggleLocationsActive = {this.toggleLocationsActive}
+                        hideError={this.hideError}
+                        isMarkerShown
+                        onShowParks={this.showParks}
+                        markers={this.state.markers}
+                        googleMapURL="http://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&key=AIzaSyCQOBc4Ov8uW2hnucJsZTeKmHqo-dZdNmQ"
+                        loadingElement={<div style={{height: '100%'}}/>}
+                        containerElement={<div style={{height:'100%'}} />}
+                        mapElement={<div style={{height:'100%'}} />}
+                    />)}
+                {(!navigator.onLine)&&(
+                    <div className="offline">
+                        <h3>You are offline ...</h3>
+                        <p>You can see list of parks in my neighborhood.<br/>
+                            For this click button 'Open map menu'.</p>
+                    </div>
+                )}
             </div>
         </div>
     );
