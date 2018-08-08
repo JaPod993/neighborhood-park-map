@@ -17,10 +17,10 @@ class App extends Component {
         pageTitle: "Parks in my neighborhood",
         listTitle: "List of parks in my neighborhood",
         activeMarker: "",
-        error: "There was an error with making a request for information about this place."
+        error: "There was an error making a request from Wikipedia"
     };
 
-    toggleLocationsActive = locationKey => {
+    markerLocationsActive = locationKey => {
       this.setState({
           activeMarker: locationKey
       })
@@ -70,7 +70,7 @@ class App extends Component {
                         onShowParks={this.showParks}
                         markers={this.state.markers}
                         closeMenu={this.closeMenu}
-                        toggleLocationsActive={this.toggleLocationsActive}
+                        markerLocationsActive={this.markerLocationsActive}
                         hideError={this.hideError}
                     />
                 </div>
@@ -82,7 +82,7 @@ class App extends Component {
                 {(navigator.onLine)&&(
                     <Map
                         activeKey={this.state.activeKey}
-                        toggleLocationsActive = {this.toggleLocationsActive}
+                        markerLocationsActive = {this.markerLocationsActive}
                         isMarkerShown
                         onShowParks={this.showParks}
                         markers={this.state.markers}

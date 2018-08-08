@@ -7,7 +7,7 @@ class Markers extends Component {
             <ol id='list-of-places'>
                 {this.props.markers.map((marker,i) => (
                     <li tabIndex='0' key={i} onClick={() => {
-                        this.props.toggleLocationsActive(i);
+                        this.props.markerLocationsActive(i);
                         this.props.closeMenu();
                         getInfo(marker.title);
                     }}>

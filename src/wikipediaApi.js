@@ -6,8 +6,7 @@ export const getInfo = (search) => {
         }).then(response => response.json()).then(addInfo).catch(e => requestError(e));
     };
 
-    const setInfo = (data) => {
-    console.log(data);
+    const addInfo = (data) => {
     const link = data[3][0];
     const art = data[2][0];
     if (link || art) {
@@ -21,7 +20,7 @@ export const getInfo = (search) => {
     }
 };
 
-const displayError =(e) => {
+const requestError =(e) => {
     console.log(e);
     let infoBox = document.getElementById('info-box');
     infoBox.setAttribute('class', 'show');
