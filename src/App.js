@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Map from './map.js';
 import './App.css';
 
 class App extends Component {
@@ -14,7 +15,11 @@ class App extends Component {
                 <ul id="list-of-places"></ul>
             </div>
             <div id="map">
-                <Map/>
+                <Map
+                    center={{lat: 50.07598, lng: 20.0030946}}
+                    containerElement={<div style={{height:100+'%'}} />}
+                    mapElement={<div style={{height:100+'%'}} />}
+                />
             </div>
         </div>
     );
