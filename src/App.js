@@ -1,11 +1,33 @@
-import React, { Component } from 'react';
-import Map from './map.js';
-import './App.css';
+import React, { Component } from 'react'
+import Map from './map.js'
+import './App.css'
+import Parks from './parks.js'
+import superagent from 'superagent'
 
 class App extends Component {
+  constructor(){
+      super()
+      this.state = {
+          venues:[]
+      }
+  }
+
   componentWillMount(){
       console.log('componentwillmount');
   }
+
+  const url ='data/parks.json'
+
+  superagent
+  .get(url)
+  .query(null)
+  .set('Accept', 'text/json')
+  .end((error, response) => {
+
+      console.log(JSON.stringify(venues))
+})
+
+
 
   render() {
     return (
