@@ -3,8 +3,23 @@ import Map from './map.js';
 import './App.css';
 
 class App extends Component {
+  componentWillMount(){
+      console.log('componentwillmount');
+  }
+
   render() {
     return (
+        const markers = [
+                {
+                    location: {
+                        lat: 50.07598,
+                        lng: 20.0030946
+                    }
+                }
+
+            ]
+
+
         <div className="container">
             <h1>Parks in my neighborhood</h1>
             <div className="show-box">
@@ -16,6 +31,7 @@ class App extends Component {
             </div>
             <div id="map">
                 <Map
+                    zoom={13}
                     center={{lat: 50.07598, lng: 20.0030946}}
                     containerElement={<div style={{height:100+'%'}} />}
                     mapElement={<div style={{height:100+'%'}} />}
