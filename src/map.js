@@ -3,8 +3,9 @@ import { compose, withProps, withStateHandlers } from 'recompose'
 import { withScriptjs,withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import MapStyles from './data/MapStyles.json';
 import Markers from './Markers.js';
+import Icon from './icons/park1.png'
 
-
+let icon = Icon;
 
 export const Map = compose(
     withStateHandlers(() => ({
@@ -31,7 +32,7 @@ export const Map = compose(
                         position={marker.location}
                         title={marker.title}
                         onClick={props.onToggleOpen}
-                        // icon={{url: 'icons/park1.png'}}
+                        icon={icon}
                     >
                     {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
                         <div>{marker.title}</div>
