@@ -48,14 +48,14 @@ export const Map = compose(
                                 .catch(error => console.error(error)),
                             <InfoWindow onCloseClick={props.onToggleOpen}>
                                 <div>
-                                    <span id="title"><strong>{market.title}</strong></span>
-                                    <br/><span>Address:</span>
+                                    <span id="title">{marker.title}</span>
+                                    <br/>
+                                    <span id='address-title'>Address:</span>
                                     <br/>
                                     <span id="address"></span>
                                     <br/>
                                     <span id='short-article'></span>
                                     <br/>
-                                    <span id='see-link'></span>
                                     <a target=_blank id='results'></a>
                                     <span id='info'></span>
                                 </div>

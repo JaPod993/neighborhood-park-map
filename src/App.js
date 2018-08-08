@@ -36,21 +36,26 @@ class App extends Component {
             markers_parks.push(marker);
         }
 
-        showParks = (markers) => {
-            this.setState({markers: markers_parks});
-        };
-
-        openMenu(){
-            document.getElementById('panel').style.display = "block";
-        }
-
-        closeMenu(){
-            document.getElementById('panel').style.display = "none";
-        }
-
     }
 
-  render() {
+    showParks = (markers) => {
+        this.setState({markers: markers_parks});
+        document.getElementById('panel').style.display='none';
+        document.getElementById('open-menu').style.display='block';
+    };
+
+    openMenu(){
+        document.getElementById('panel').style.display = "block";
+        document.getElementById('open-menu').style.display = "none";
+    }
+
+    closeMenu(){
+        document.getElementById('panel').style.display = "none";
+        document.getElementById('open-menu').style.display = "block";
+    }
+
+
+    render() {
 
     return (
         <div className="container">
@@ -58,7 +63,7 @@ class App extends Component {
             <div id="panel">
                 <button id="close-menu" onClick={() => this.closeMenu()}>x</button>
                 <h1>{this.state.pageTitle}</h1>
-                <div className="show-box">
+                <div className="options-box">
                     <button onClick={() => this.showParks()} id="show-parks">Show All Parks</button>
                 </div>
                 <div id="list-of-localisations">
@@ -66,6 +71,7 @@ class App extends Component {
                     <Markers
                         onShowParks={this.showParks}
                         markers={this.state.markers}
+                        closeMenu={this.closeMenu}
                         toggleLocationsActive={this.toggleLocationsActive}
                     />
                 </div>
