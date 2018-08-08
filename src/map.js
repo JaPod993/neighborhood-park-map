@@ -3,7 +3,7 @@ import { compose, withProps, withState, withStateHandlers, withHandlers } from '
 import { withScriptjs,withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import MapStyles from './data/MapStyles.json';
 import Markers from './Markers.js';
-
+import { geocodeByPlaceId } from 'react-places-autocomplete'
 export const Map = compose(
     withStateHandlers(() => ({
     isOpen: false,
@@ -24,9 +24,6 @@ export const Map = compose(
             defaultOptions={{styles: MapStyles}}
             mapTypeControl={false}
             >{ props.isMarkerShown && props.markers.map((marker, i) => {
-                let icon = {
-                    url: './icons/park1.png'
-                }
                 return (
                     <Marker
                         {...marker}
@@ -38,7 +35,14 @@ export const Map = compose(
                             props.toggleLocationsActive(i);
                         }}
                     >
-                        {i === props.activeKey && (<InfoWindow onCloseClick={props.onToggleOpen}>
+                        {i === props.activeKey && (
+                            geocodeByPlaceId(marker.place_id)
+                                .then(recults => {
+                                const address = recults[0].formatted_address;
+                                console.log(address);
+                                )}
+                                .catch(error => console.error(error)),
+                            <InfoWindow onCloseClick={props.onToggleOpen}>
                             <div>{marker.title}</div>
                         </InfoWindow>)}
                     </Marker>
