@@ -4,6 +4,7 @@ import { withScriptjs,withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react
 import MapStyles from './data/MapStyles.json';
 import Markers from './Markers.js';
 import { geocodeByPlaceId } from 'react-places-autocomplete'
+
 export const Map = compose(
     withStateHandlers(() => ({
     isOpen: false,
@@ -40,8 +41,8 @@ export const Map = compose(
                                 .then(recults => {
                                 const address = recults[0].formatted_address;
                                 document.getElementById('address').innerHTML += address;
-                                console.log(recults;
-                                )}
+                                console.log(recults);
+                                })
                                 .catch(error => console.error(error)),
                             <InfoWindow onCloseClick={props.onToggleOpen}>
                                 <div><strong>{marker.title}</strong><br/>Address: <span id="address"></span></div>

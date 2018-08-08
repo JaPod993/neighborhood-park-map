@@ -39,23 +39,36 @@ class App extends Component {
         showParks = (markers) => {
             this.setState({markers: markers_parks});
         }
+
+        openMenu(){
+            document.getElementById('panel').style.display = "block";
+        }
+
+        closeMenu(){
+            document.getElementById('panel').style.display = "none";
+        }
+
     }
 
   render() {
 
     return (
         <div className="container">
-            <h1>{this.state.pageTitle}</h1>
-            <div className="show-box">
-                <button onClick={() => this.showParks()} id="show-parks">Show All Parks</button>
-            </div>
-            <div id="list-of-localisations">
-                <h2>{this.state.listTitle}</h2>
-                <Markers
-                    onShowParks={this.showParks}
-                    markers={this.state.markers}
-                    toggleLocationsActive={this.toggleLocationsActive}
-                />
+            <button id='open-menu' onClick={() => this.openMenu()}>Open menu</button>
+            <div id="panel">
+                <button id="close-menu" onClick={() => this.closeMenu()}>x</button>
+                <h1>{this.state.pageTitle}</h1>
+                <div className="show-box">
+                    <button onClick={() => this.showParks()} id="show-parks">Show All Parks</button>
+                </div>
+                <div id="list-of-localisations">
+                    <h2>{this.state.listTitle}</h2>
+                    <Markers
+                        onShowParks={this.showParks}
+                        markers={this.state.markers}
+                        toggleLocationsActive={this.toggleLocationsActive}
+                    />
+                </div>
             </div>
             <div id="map">
                 <Map
