@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { compose, withProps, withStateHandlers } from 'recompose'
 import { withScriptjs,withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
-import MapStyles from './data/MapStyles';
+import MapStyles from './data/MapStyles.json';
+import Markers from './Markers.js';
 
 
 
@@ -21,21 +23,21 @@ export const Map = compose(
             defaultCenter={{ lat: 50.07598, lng: 20.0030946 }}
             defaultOptions={{styles: MapStyles}}
             mapTypeControl={false}
-            >{ props.markers.map( marker => {
-                    console.log(marker.location);
+            >{ props.isMarkerShown && props.markers.map( marker => {
+                return (
                     <Marker
                         {...marker}
                         key={marker.place_id}
                         position={marker.location}
                         title={marker.title}
                         onClick={props.onToggleOpen}
-                        icon={{url: 'icons/park1.png'}}
+                        // icon={{url: 'icons/park1.png'}}
                     >
                     {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
-                        <div>Open</div>
+                        <div>{marker.title}</div>
                     </InfoWindow>}
                     </Marker>
-                })}
+                );})}
         </GoogleMap>
     );})
 

@@ -9,28 +9,28 @@ import Parks from './data/parks.json'
 let markers = [];
 let markers_parks = [];
 
+let parks= Parks;
+
 class App extends Component {
     state = {
         markers: [],
-        markers_parks: []
+        markers_parks: [],
+        Parks
     }
 
   componentWillMount(){
-      let parks = Parks;
+  }
+
+  render() {
 
       //creating array of markers from parks json
       for (let i = 0; i < parks.length; i++) {
-          // let location = parks[i].location;
-          // let title = parks[i].title;
-          // let place_id = parks[i].place_id;
           let marker = parks[i];
           // Push the marker to our array of markers.
           markers_parks.push(marker);
           markers.push(marker);
       }
-  }
 
-  render() {
     return (
         <div className="container">
             <h1>Parks in my neighborhood</h1>
