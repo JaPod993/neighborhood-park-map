@@ -24,19 +24,21 @@ export const Map = compose(
             defaultCenter={{ lat: 50.07598, lng: 20.0030946 }}
             defaultOptions={{styles: MapStyles}}
             mapTypeControl={false}
-            >{ props.isMarkerShown && props.markers.map( marker => {
+            >{ props.isMarkerShown && props.markers.map((marker, i) => {
                 return (
                     <Marker
                         {...marker}
-                        key={marker.place_id}
+                        key={i}
                         position={marker.location}
                         title={marker.title}
-                        onClick={props.onToggleOpen}
+                        onClick={() => {
+                            props.toggleLocationsActive(i);
+                        }}
                         icon={icon}
                     >
-                    {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
+                    {i === props.activeKey && (<InfoWindow onCloseClick={props.onToggleOpen}>
                         <div>{marker.title}</div>
-                    </InfoWindow>}
+                    </InfoWindow>)}
                     </Marker>
                 );})}
         </GoogleMap>
