@@ -5,8 +5,10 @@ class Markers extends Component {
         return(
             <ol id='list-of-places'>
                 {this.props.markers.map((marker,i) => (
-                    <li key={i}>
-                        <a href="javascript:google.maps.event.trigger(markers[${i}],'click', {});">{ marker.title }</a>
+                    <li key={i} onClick={() => {
+                        this.props.toggleLocationsActive(i);
+                    }}>
+                       { marker.title }
                     </li>
                 ))}
             </ol>

@@ -49,6 +49,7 @@ class App extends Component {
                 <Markers
                     onShowParks={this.showParks} markers={markers}
                     markers={this.state.markers}
+                    toggleLocationsActive ={this.togleLocationsActive}
                 />
             </div>
             <div id="map">
