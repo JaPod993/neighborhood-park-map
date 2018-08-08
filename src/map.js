@@ -39,11 +39,12 @@ export const Map = compose(
                             geocodeByPlaceId(marker.place_id)
                                 .then(recults => {
                                 const address = recults[0].formatted_address;
-                                console.log(address);
+                                document.getElementById('address').innerHTML += address;
+                                console.log(recults;
                                 )}
                                 .catch(error => console.error(error)),
                             <InfoWindow onCloseClick={props.onToggleOpen}>
-                            <div>{marker.title}</div>
+                                <div><strong>{marker.title}</strong><br/>Address: <span id="address"></span></div>
                         </InfoWindow>)}
                     </Marker>
                 );})}
