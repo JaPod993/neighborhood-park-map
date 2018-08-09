@@ -25,14 +25,16 @@ export const Map = compose(
             defaultCenter={{ lat: 50.064650, lng: 19.944980 }}
             defaultOptions={{styles: MapStyles}}
             mapTypeControl={false}
-            >{ props.isMarkerShown && props.markers.map((marker, i) => {
+        >{ props.isMarkerShown && props.markers.map((marker, i) => {
+            let markerImage='/icons/'
+            if (i === props.activeKey) markerImage='/icons/clicked/'
                 return (
                     <Marker
                         {...marker}
                         key={i}
                         position={marker.location}
                         title={marker.title}
-                        // icon={'./icons/park1.png'}
+                        icon={markerImage + marker.type + '.png'}
                         animation={window.google.maps.Animation.DROP}
                         onClick={() => {
                             props.markerLocationsActive(i);

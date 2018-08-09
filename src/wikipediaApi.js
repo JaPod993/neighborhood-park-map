@@ -1,5 +1,5 @@
 export const getInfo = (search) => {
-
+//getting markers info from wikiedia API
     fetch("https://pl.wikipedia.org/w/api.php?&origin=*&action=opensearch&search=" + search + "&limit=1",
         {
             headers: {'Accept': 'application/json'},
@@ -19,7 +19,7 @@ export const getInfo = (search) => {
         document.querySelector('#info').innerHTML = 'Unfortunately, no info was returned for this data.'
     }
 };
-
+//error handling
 const requestError =(e) => {
     let infoBox = document.getElementById('info-box');
     infoBox.setAttribute('class', 'show');

@@ -1,5 +1,5 @@
 export const resetInfoBox = () => {
-
+//reseting information div
     document.querySelector('#results').removeAttribute("href");
     document.querySelector('#results').removeAttribute("alt");
     document.querySelector('#results').innerHTML = '';

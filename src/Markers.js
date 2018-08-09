@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { getInfo } from './wikipediaApi.js'
-
+//Displaing info about clicked marker
 class Markers extends Component {
     render() {
         return(

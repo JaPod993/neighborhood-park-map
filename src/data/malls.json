@@ -1,0 +1,7 @@
+[
+  {"title": "Centrum Handlowe Czyżyny, Kraków", "location": {"lat":50.0773594, "lng":20.0173507}, "place_id": "ChIJT6lP9iZFFkcRkMpb1kb-o10", "type": "mall"},
+  {"title": "M1 Kraków", "location": {"lat":50.063937, "lng":19.9997253}, "place_id": "ChIJ90nQ0tdEFkcR5ik7QtpX-94", "type": "mall"},
+  {"title": "Galeria Plaza Kraków", "location": {"lat":50.064398, "lng":19.9837101}, "place_id": "ChIJ7SHFhitbFkcRxXsyM0A5IVQ", "type": "mall"},
+  {"title": "Centrum Serenada, Kraków", "location": {"lat":50.0881964, "lng":19.9857023}, "place_id": "ChIJ1dOwocBaFkcRUZo_okzhJso", "type": "mall"},
+  {"title": "Centrum Handlowe Krokus, Kraków", "location": {"lat":50.0875353, "lng":19.9817706}, "place_id": "ChIJs930tsZaFkcRwsTztUGuLOM", "type": "mall"}
+] 

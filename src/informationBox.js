@@ -1,4 +1,4 @@
-
+//component for place information form wikipedia API
 import React, { Component } from 'react'
 
 class InformationBox extends Component {
