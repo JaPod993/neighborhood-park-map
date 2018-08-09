@@ -5,7 +5,7 @@ class InformationBox extends Component {
 
     render(){
         return(
-            <details id="det">
+            <details id="spec">
                 <h3 tabIndex="0" id="info-title">Information from google maps and wikipedia API:</h3>
                 <p tabIndex="0" id="address"></p>
                 <p tabIndex="0" role="article" id="short-article"></p>

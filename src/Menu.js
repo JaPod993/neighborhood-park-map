@@ -7,13 +7,11 @@ class Menu extends Component {
         return(
             <nav>
                 <button tabIndex="0" onClick={() => this.props.showParks()} id="show-parks">
-                    <img alt="Parks" src="/icons/park_icon.png" />
-                    /* icon by Panna Chee */
+                    <img alt="Parks by Panna Chee" src="/icons/park_icon.png" />
                     <span className="textBtn">Parks</span>
                 </button>
                 <button tabIndex="0" onClick={() => this.props.showMalls()} id="show-malls">
-                    <img alt="Malls" src="/icons/mall_icon.png" />
-                    /* icon by Bernar Novalyii */
+                    <img alt="Malls by Bernar Novalyii" src="/icons/mall_icon.png" />
                     <span className="textBtn">Malls</span>
                 </button>
                 <button tabIndex="0" onClick={() => this.props.showAll()} id="show-all">
