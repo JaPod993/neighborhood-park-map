@@ -92,7 +92,7 @@ class App extends Component {
     return (
         <main className="container">
             <button id='open-menu' onClick={() => this.openMenu()}>Open menu</button>
-            <section id="panel">
+            <section id="menu-wrapper">
                 <button aria-label="Close" id="close-menu" onClick={() => this.closeMenu()}>x</button>
                 <h1 tabIndex="0">{this.state.pageTitle}</h1>
                 <Menu
