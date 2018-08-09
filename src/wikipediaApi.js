@@ -2,7 +2,7 @@ export const getInfo = (search) => {
 
     fetch("https://pl.wikipedia.org/w/api.php?&origin=*&action=opensearch&search=" + search + "&limit=1",
         {
-            headers: {'Accept': 'application/json',},
+            headers: {'Accept': 'application/json'},
         }).then(response => response.json()).then(addInfo).catch(e => requestError(e));
     };
 
@@ -21,7 +21,6 @@ export const getInfo = (search) => {
 };
 
 const requestError =(e) => {
-    console.log(e);
     let infoBox = document.getElementById('info-box');
     infoBox.setAttribute('class', 'show');
     setTimeout(function(){ infoBox.setAttribute('class', 'hide') }, 3000);

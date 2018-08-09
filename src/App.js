@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import Map from './map.js'
 import './App.css'
+import Menu from './Menu.js'
+import InformationBox from './informationBox.js'
 import Markers from './Markers.js'
 import Parks from './data/parks.json'
+import { resetInfoBox } from './resetInfoBox.js'
 
 let parks= Parks;
 let markers_all = [];
@@ -12,8 +15,6 @@ let markers_parks = [];
 class App extends Component {
     state = {
         markers: markers_all,
-        // markers_parks: [],
-        // Parks,
         pageTitle: "Parks in my neighborhood",
         listTitle: "List of parks in my neighborhood",
         activeMarker: "",
@@ -22,8 +23,25 @@ class App extends Component {
 
     markerLocationsActive = locationKey => {
       this.setState({
-          activeMarker: locationKey
+          activeKey: locationKey
       })
+    };
+
+    showParks = (markers) => {
+        this.setState({markers: markers_parks});
+        document.getElementById('panel').style.display='none';
+        document.getElementById('open-menu').style.display='block';
+        resetInfoBox();
+    };
+
+    openMenu = () => {
+        document.getElementById('panel').style.display = "block";
+        document.getElementById('open-menu').style.display = "none";
+    };
+
+    closeMenu = () => {
+        document.getElementById('panel').style.display = "none";
+        document.getElementById('open-menu').style.display = "block";
     };
 
     componentWillMount(){
@@ -34,37 +52,20 @@ class App extends Component {
             markers_all.push(marker);
             markers_parks.push(marker);
         }
-
-    }
-
-    showParks = (markers) => {
-        this.setState({markers: markers_parks});
-        document.getElementById('panel').style.display='none';
-        document.getElementById('open-menu').style.display='block';
-    };
-
-    openMenu(){
-        document.getElementById('panel').style.display = "block";
-        document.getElementById('open-menu').style.display = "none";
-    }
-
-    closeMenu(){
-        document.getElementById('panel').style.display = "none";
-        document.getElementById('open-menu').style.display = "block";
     }
 
     render() {
 
     return (
-        <div className="container">
+        <main className="container">
             <button id='open-menu' onClick={() => this.openMenu()}>Open menu</button>
-            <div id="panel">
-                <button id="close-menu" onClick={() => this.closeMenu()}>x</button>
+            <section id="panel">
+                <button aria-label="Close" id="close-menu" onClick={() => this.closeMenu()}>x</button>
                 <h1 tabIndex="0">{this.state.pageTitle}</h1>
-                <div className="options-box">
-                    <button tabIndex="0" onClick={() => this.showParks()} id="show-parks"><img alt="Theatre symbol" src="/src/icons/park1.png" /><span className="textBtn">Parks</span></button>
-                </div>
-                <div id="list-of-localisations">
+                <Menu
+                    showParks={this.showParks}
+                />
+                <section id="list-of-localisations">
                     <h2 tabIndex="0">{this.state.listTitle}</h2>
                     <Markers
                         onShowParks={this.showParks}
@@ -73,35 +74,36 @@ class App extends Component {
                         markerLocationsActive={this.markerLocationsActive}
                         hideError={this.hideError}
                     />
-                </div>
-            </div>
-            <div id="info-box">
-                <span tabIndex="0" id="next">{ this.state.error }</span>
-            </div>
+                </section>
+            </section>
+            <mark id="info-box">
+                <p tabIndex="0" id="next">{ this.state.error }</p>
+            </mark>
             <div id="map">
                 {(navigator.onLine)&&(
                     <Map
                         activeKey={this.state.activeKey}
                         markerLocationsActive = {this.markerLocationsActive}
+                        resetInfoBox={this.resetInfoBox}
                         isMarkerShown
-                        onShowParks={this.showParks}
                         markers={this.state.markers}
-                        googleMapURL="http://maps.googleapis.com/maps/api/js?libraries=geometry,drawing,places&key=AIzaSyCQOBc4Ov8uW2hnucJsZTeKmHqo-dZdNmQ"
+                        googleMapURL="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCQOBc4Ov8uW2hnucJsZTeKmHqo-dZdNmQ"
                         loadingElement={<div style={{height: '100%'}}/>}
-                        containerElement={<div style={{height:'100%'}} />}
+                        containerElement={<div style={{height:'80%'}} />}
                         mapElement={<div style={{height:'100%'}} />}
                     />)}
                 {(!navigator.onLine)&&(
-                    <div className="container-offline">
+                    <section id="container-offline">
                         <div id="info-offline">
-                            <h3>You are offline ...</h3>
+                            <h3 tabIndex='0'>You are offline ...</h3>
                             <p>You can see list for cultural places in Warsaw.<br/>
                                 For this click button 'Open map menu'.</p>
                         </div>
-                    </div>
+                    </section>
                 )}
             </div>
-        </div>
+            <InformationBox />
+        </main>
     )
   }
 }

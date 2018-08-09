@@ -46,8 +46,6 @@ self.addEventListener('fetch', e => {
             .then(function(response) {
                 if (response) {
                     return response;
-                } else {
-                    console.log('There are not response');
                 }
                 return fetch(e.request);
             })

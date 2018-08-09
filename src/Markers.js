@@ -4,9 +4,9 @@ import { getInfo } from './wikipediaApi.js'
 class Markers extends Component {
     render() {
         return(
-            <ol id='list-of-places'>
+            <ol tabIndex="0" id='list-of-places'>
                 {this.props.markers.map((marker,i) => (
-                    <li tabIndex='0' key={i} onClick={() => {
+                    <li tabIndex='0' key={i} details="det" role="link" onClick={() => {
                         this.props.markerLocationsActive(i);
                         this.props.closeMenu();
                         getInfo(marker.title);

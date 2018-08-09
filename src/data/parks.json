@@ -1,8 +1,8 @@
 [
-  {"title": "Park Szwedzki w Krakowie", "location": {"lat":50.0752858, "lng":20.0155642}, "place_id": "ChIJTy3b8RFFFkcRcEr0T7Mc3rU"},
-  {"title": "Park Ratuszowy w Krakowie", "location": {"lat":50.0752858, "lng":20.0155642}, "place_id": "ChIJA4UKXxFFFkcRuBXO-7PVEFs"},
-  {"title": "Łąki Nowohuckie w Krakowie", "location": {"lat":50.0742674, "lng":20.0250485}, "place_id": "ChIJ6dBY4htFFkcR6xjviQ8B3CA"},
-  {"title": "Park Lotników Polskich w Krakowie", "location": {"lat":50.0737388, "lng":20.0037213}, "place_id": "ChIJ582VMNVaFkcR-uO-eLJ5Mn0"},
-  {"title": "Park Strzelecki w Krakowie", "location": {"lat":50.0580366, "lng":19.949648}, "place_id": "ChIJVTyrjBlbFkcR5Y44DVtsmU4"},
-  {"title": "Park Zalew Nowohucki w Krakowie", "location": {"lat":50.0727339, "lng":20.0274195}, "place_id": "ChIJLcG0T3NFFkcRoFryg46r5m4"}
+  {"title": "Park Szwedzki w Krakowie", "location": {"lat":50.074509, "lng":20.043810}, "place_id": "ChIJTy3b8RFFFkcRcEr0T7Mc3rU", "type": "park"},
+  {"title": "Park Ratuszowy w Krakowie", "location": {"lat":50.075667, "lng":20.039543}, "place_id": "ChIJA4UKXxFFFkcRuBXO-7PVEFs", "type": "park"},
+  {"title": "Łąki Nowohuckie w Krakowie", "location": {"lat":50.067355, "lng":20.035850}, "place_id": "ChIJ6dBY4htFFkcR6xjviQ8B3CA", "type": "park"},
+  {"title": "Park Lotników Polskich w Krakowie", "location": {"lat":50.070268, "lng":19.993358}, "place_id": "ChIJ582VMNVaFkcR-uO-eLJ5Mn0", "type": "park"},
+  {"title": "Park Strzelecki w Krakowie", "location": {"lat":50.065891, "lng":19.950119}, "place_id": "ChIJVTyrjBlbFkcR5Y44DVtsmU4", "type": "park"},
+  {"title": "Park Zalew Nowohucki w Krakowie", "location": {"lat":50.079039, "lng":20.053051}, "place_id": "ChIJLcG0T3NFFkcRoFryg46r5m4", "type": "park"}
 ] 

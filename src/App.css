@@ -47,28 +47,28 @@ html, body {
   color:#222;
 }
 
-.options-box {
-  background: #fff;
-  border-radius: 3px;
-  height: 100%;
-  line-height: 35px;
-  padding: 10px 10px 10px 20px;
-  text-align: left;
-  width: 260px;
+nav {
+    background: #fff;
+    border-radius: 3px;
+    height: 100%;
+    line-height: 35px;
+    padding: 10px 10px 0 20px;
+    text-align: left;
+    width: 260px;
 }
 
-.options-box button {
-  display: block;
-  float: left;
-  width: 120px;
-  margin-top: 5px;
-  background-color: #eee;
-  border-radius: 5px;
-  cursor: pointer;
+nav button {
+    display: block;
+    float: left;
+    width: 120px;
+    margin-top: 5px;
+    background-color: #eee;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.options-box button:hover{
-  background-color:#fefefe;
+nav button:hover {
+    background-color:#fefefe;
 }
 
 #show-theatres,
@@ -98,6 +98,10 @@ h2{
   font-size: 1.1em;
 }
 
+h3 {
+    font-size: 1em;
+}
+
 #list-of-places {
   width: 230px;
   height: 320px;
@@ -116,11 +120,6 @@ h2{
   line-height: 1.4;
   margin-bottom: 10px;
   padding: 3px 0;
-}
-
-#results{
-  font-size: 1.2em;
-  font-weight: bold;
 }
 
 #list-of-places li:hover,
@@ -145,12 +144,8 @@ h2{
 
 
 .gm-style-iw {
-  width: 200px !important;
-  top: 0 !important;
-  left: 0 !important;
-  border-radius: 2px 2px 0 0;
-  padding: 10px;
-  font-size: 1.2em;
+    border-radius: 2px 2px 0 0;
+    width: 200px !important;
 }
 
 #title {
@@ -158,19 +153,47 @@ h2{
   font-weight: bold;
 }
 
-#address-title {
-  text-decoration: underline;
+#info-title {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    text-decoration: underline;
+    margin-top:0;
+    margin-bottom: 8px;
 }
 
-#address,
-#short-article,
-#address-title{
-  font-size: 1.1em;
+#address {
+    display: block;
+    float: left;
+    margin-top:0;
+    margin-bottom: 8px;
 }
 
-#info{
-  color: #ff0000;
-  padding: 5px;
+#short-article{
+    display: block;
+    float: left;
+    width: 100%;
+    margin-top:0;
+    margin-bottom: 0;
+}
+
+#results {
+    display: block;
+    float: left;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top:0;
+    margin-bottom: 0;
+}
+
+#info {
+    color: #ff0000;
+    padding: 5px;
+    display: block;
+    float: left;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .textBtn{
@@ -225,6 +248,19 @@ h2{
 
 .hide {
   display: none !important;
+}
+
+#det {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+    font-size: 0.9em;
+    padding: 10px;
+    background-color:#eee;
+    color:#000;
+    height: 15%;
+    overflow-y: scroll;
 }
 
 @media (max-width:767px) {
