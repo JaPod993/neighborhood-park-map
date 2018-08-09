@@ -37,7 +37,7 @@ class App extends Component {
     /* showing parks markers */
     showParks = (markers) => {
         this.setState({markers: markers_parks});
-        document.getElementById('panel').style.display='none';
+        document.getElementById('menu-wrapper').style.display='none';
         document.getElementById('open-menu').style.display='block';
         resetInfoBox();
     };
