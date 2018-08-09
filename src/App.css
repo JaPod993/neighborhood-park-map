@@ -9,7 +9,7 @@ html, body {
   width: 290px;
   display: none;
   position: absolute;
-  left: 10;
+  left: 10px;
   top: 60px;
   z-index: 2;
   background-color: #fff;
@@ -123,11 +123,11 @@ h3 {
 }
 
 #map {
-  bottom: 0px;
+  bottom: 0;
   height: 100%;
   left: 0;
   position: absolute;
-  right: 0px;
+  right: 0;
   z-index: 1;
 }
 
@@ -181,7 +181,6 @@ h3 {
 
 #info {
     color: #ff0000;
-    padding: 5px;
     display: block;
     float: left;
     width: 100%;
@@ -224,7 +223,7 @@ h3 {
   position: absolute;
   left: 250px;
   top: 0;
-  z-index:10;
+  z-index:2;
   color:#000;
   background-color:yellow;
   padding: 20px;
