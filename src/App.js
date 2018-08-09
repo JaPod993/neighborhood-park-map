@@ -8,7 +8,7 @@ import Parks from './data/parks.json'
 import Malls from './data/malls.json'
 import { resetInfoBox } from './resetInfoBox.js'
 
-//variables and arrays for points data
+/* variables and arrays for points data */
 let malls= Malls;
 let parks= Parks;
 let markers_all = [];
@@ -17,7 +17,8 @@ let markers_malls = [];
 
 
 class App extends Component {
-    //application states
+
+    /* application states */
     state = {
         markers: markers_all,
         pageTitle: "Spening time in my neighborhood",
@@ -26,14 +27,14 @@ class App extends Component {
         error: "There was an error making a request from Wikipedia"
     };
 
-    //setting active marker location
+    /* setting active marker location */
     markerLocationsActive = locationKey => {
       this.setState({
           activeKey: locationKey
       })
     };
 
-    //showing parks markers
+    /* showing parks markers */
     showParks = (markers) => {
         this.setState({markers: markers_parks});
         document.getElementById('panel').style.display='none';
@@ -41,7 +42,7 @@ class App extends Component {
         resetInfoBox();
     };
 
-    //showing malls markers
+    /* showing malls markers */
     showMalls = (markers) => {
         this.setState({markers: markers_malls});
         document.getElementById('panel').style.display='none';
@@ -49,7 +50,7 @@ class App extends Component {
         resetInfoBox();
     };
 
-    //showing every marker
+    /* showing every marker */
     showAll = (markers) => {
         this.setState({markers: markers_all});
         document.getElementById('panel').style.display = "none";
@@ -57,31 +58,30 @@ class App extends Component {
         resetInfoBox();
     };
 
-    //open menu
+    /* open menu */
     openMenu = () => {
         document.getElementById('panel').style.display = "block";
         document.getElementById('open-menu').style.display = "none";
     };
 
-    //close menu
+    /* close menu */
     closeMenu = () => {
         document.getElementById('panel').style.display = "none";
         document.getElementById('open-menu').style.display = "block";
     };
 
     componentWillMount(){
-        //creating array of markers from parks json
+        /* creating array of markers from parks json */
         for (let i = 0; i < parks.length; i++) {
             let marker = parks[i];
-            // Push the marker to our array of markers.
+            /* Push the marker to our array of markers */
             markers_all.push(marker);
             markers_parks.push(marker);
         }
-
-        //creating array of markers from parks json
+        /* creating array of markers from parks json */
         for (let i = 0; i < malls.length; i++) {
             let marker = malls[i];
-            // Push the marker to our array of markers.
+            /* Push the marker to our array of markers */
             markers_all.push(marker);
             markers_malls.push(marker);
         }

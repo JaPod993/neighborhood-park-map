@@ -1,5 +1,6 @@
 export const getInfo = (search) => {
-//getting markers info from wikiedia API
+
+    /* getting markers info from wikiedia API */
     fetch("https://pl.wikipedia.org/w/api.php?&origin=*&action=opensearch&search=" + search + "&limit=1",
         {
             headers: {'Accept': 'application/json'},
@@ -13,13 +14,13 @@ export const getInfo = (search) => {
         document.querySelector('#short-article').innerHTML = '<em>' + art + '</em><br/>';
         document.querySelector('#results').setAttribute("href", link);
         document.querySelector('#results').setAttribute("alt", link);
-        document.querySelector('#results').innerHTML = 'See article in Wikipedia »';
+        document.querySelector('#results').innerHTML = 'See in Wikipedia';
     }
     else {
-        document.querySelector('#info').innerHTML = 'Unfortunately, no info was returned for this data.'
+        document.querySelector('#info').innerHTML = 'Info was returned for this data.'
     }
 };
-//error handling
+/* error handling */
 const requestError =(e) => {
     let infoBox = document.getElementById('info-box');
     infoBox.setAttribute('class', 'show');

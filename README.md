@@ -16,6 +16,14 @@ Application requires browser with javascript enabled
 3. Run application using `npm start` command.
 6. Go to: `http://localhost:3000`.
 
+### icons
+
+Icons used are from Noun Project
+Park icon by Panna Chee
+Mall icon by Bernar Novalyi
+
+CC license
+
 ### author
 
 Jan JaPod Podgórski

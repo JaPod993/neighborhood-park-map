@@ -1,4 +1,4 @@
-//component for place information form wikipedia API
+/* component for place information form wikipedia API */
 import React, { Component } from 'react'
 
 class InformationBox extends Component {
@@ -6,7 +6,7 @@ class InformationBox extends Component {
     render(){
         return(
             <details id="det">
-                <h3 tabIndex="0" id="info-title">Informations about chosen place:</h3>
+                <h3 tabIndex="0" id="info-title">Information from google maps and wikipedia API:</h3>
                 <p tabIndex="0" id="address"></p>
                 <p tabIndex="0" role="article" id="short-article"></p>
                 <a tabIndex="0" target="blank" id="results">Link: </a>
