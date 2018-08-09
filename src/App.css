@@ -9,7 +9,7 @@ html, body {
   width: 290px;
   display: none;
   position: absolute;
-  left: 0;
+  left: 10;
   top: 60px;
   z-index: 2;
   background-color: #fff;
@@ -29,10 +29,8 @@ html, body {
 }
 
 #close-menu{
-  position: absolute;
-  top: 11px;
-  left: 255px;
-  z-index: 10;
+  width: 290px;
+  z-index: 2;
   background-color: #ff6262;
   padding: 4px 8px;
   font-size: 0.8em;
@@ -43,8 +41,8 @@ html, body {
 
 #open-menu:hover,
 #close-menu:hover {
-  background-color:#eee;
-  color:#222;
+  background-color:#ffb505;
+  color:white;
 }
 
 nav {
@@ -62,9 +60,10 @@ nav button {
     float: left;
     width: 117px;
     margin-top: 5px;
-    background-color: #eee;
-    border-radius: 5px;
+    background-color: white;
+    border-radius: 8px;
     cursor: pointer;
+    border: 1px solid #ff6262;
 }
 
 #show-parks {
@@ -73,16 +72,6 @@ nav button {
 
 nav button:hover {
     background-color:#fefefe;
-}
-
-#show-theatres,
-#show-museums {
-  margin-right: 10px;
-}
-
-#show-museums,
-#show-galeries {
-  margin-top: 10px;
 }
 
 #show-all{
@@ -274,7 +263,7 @@ h3 {
 @media (max-width:767px) {
 
   #open-menu {
-    left: 120px;
+    left: 10px;
     padding: 10px;
   }
 }

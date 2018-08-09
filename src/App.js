@@ -45,7 +45,7 @@ class App extends Component {
     /* showing malls markers */
     showMalls = (markers) => {
         this.setState({markers: markers_malls});
-        document.getElementById('panel').style.display='none';
+        document.getElementById('menu-wrapper').style.display='none';
         document.getElementById('open-menu').style.display='block';
         resetInfoBox();
     };
@@ -53,20 +53,20 @@ class App extends Component {
     /* showing every marker */
     showAll = (markers) => {
         this.setState({markers: markers_all});
-        document.getElementById('panel').style.display = "none";
+        document.getElementById('menu-wrapper').style.display = "none";
         document.getElementById('open-menu').style.display = "block";
         resetInfoBox();
     };
 
     /* open menu */
     openMenu = () => {
-        document.getElementById('panel').style.display = "block";
+        document.getElementById('menu-wrapper').style.display = "block";
         document.getElementById('open-menu').style.display = "none";
     };
 
     /* close menu */
     closeMenu = () => {
-        document.getElementById('panel').style.display = "none";
+        document.getElementById('menu-wrapper').style.display = "none";
         document.getElementById('open-menu').style.display = "block";
     };
 
@@ -93,7 +93,7 @@ class App extends Component {
         <main className="container">
             <button id='open-menu' onClick={() => this.openMenu()}>Open menu</button>
             <section id="menu-wrapper">
-                <button aria-label="Close" id="close-menu" onClick={() => this.closeMenu()}>x</button>
+                <button aria-label="Close" id="close-menu" onClick={() => this.closeMenu()}>zamknij</button>
                 <h1 tabIndex="0">{this.state.pageTitle}</h1>
                 <Menu
                     showParks={this.showParks}
